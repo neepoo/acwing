@@ -46,17 +46,16 @@ func subSlice(a, b []int) string {
 	res := strings.Builder{}
 	t := 0
 	for i := 0; i < len(a); i++ {
-		tmp := a[i]
+		t = a[i] - t
 		if i < len(b) {
-			tmp -= b[i]
+			t -= b[i]
 		}
-		tmp -= t
-		if tmp < 0 {
+		c = append(c, (t+10)%10)
+		if t < 0 {
 			t = 1
 		} else {
 			t = 0
 		}
-		c = append(c, (tmp+10)%10)
 	}
 	// 处理前导0
 	c = removePrefixZero(c)

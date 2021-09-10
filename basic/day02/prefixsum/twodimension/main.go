@@ -17,7 +17,7 @@ var (
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	reader = bufio.NewReaderSize(reader, 2*1024*1024)
-	fmt.Fscanf(reader, "%d %d %d\n", &n, &m, &q)
+ 	fmt.Fscanf(reader, "%d %d %d\n", &n, &m, &q)
 	//fmt.Println(n, m, q)
 	for i := 1; i <= n; i++ {
 		for j := 1; j <= m; j++ {

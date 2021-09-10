@@ -7,47 +7,32 @@ import (
 	"strings"
 )
 
-// https://www.acwing.com/problem/content/793/
-// TODO
-func Add(a, b string) string {
-	aLen := len(a)
-	bLen := len(b)
-
-	numA := make([]int, aLen)
-	numB := make([]int, bLen)
-	res := make([]int, 0)
+func sToSlice(a string) []int {
+	l := len(a)
+	res := make([]int, l)
 	i := 0
-	for j := aLen - 1; j >= 0; j-- {
+	for j := l - 1; j >= 0; j-- {
 		tmp, _ := strconv.Atoi(string(a[j]))
-		numA[i] = tmp
+		res[i] = tmp
 		i++
 	}
-	i = 0
-	for j := bLen - 1; j >= 0; j-- {
-		tmp, _ := strconv.Atoi(string(b[j]))
-		numB[i] = tmp
-		i++
-	}
-	i, j := 0, 0
+	return res
+}
+
+// https://www.acwing.com/problem/content/793/
+func Add(a, b string) string {
+	res := make([]int, 0)
+	numA, numB := sToSlice(a), sToSlice(b)
 	c := 0 // 进喂
-	for i < aLen && j < bLen {
-		tmp := numA[i] + numB[j] + c
-		res = append(res, tmp%10)
-		c = tmp / 10
-		i++
-		j++
-	}
-	for i < aLen {
-		tmp := numA[i] + c
-		res = append(res, tmp%10)
-		c = tmp / 10
-		i++
-	}
-	for j < bLen {
-		tmp := numB[j] + c
-		res = append(res, tmp%10)
-		c = tmp / 10
-		j++
+	for i := 0; i < len(numA) || i < len(numB); i++ {
+		if i < len(numA) {
+			c += numA[i]
+		}
+		if i < len(numB) {
+			c += numB[i]
+		}
+		res = append(res, c%10)
+		c /= 10
 	}
 	if c > 0 {
 		res = append(res, c)

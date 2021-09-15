@@ -33,9 +33,9 @@ func cmp(a, b []int) bool {
 }
 
 // 需要处理前导0
-func removePrefixZero(a []int) []int{
-	for len(a) > 1 && a[len(a) -1] == 0{
-		a = a[:len(a) - 1]
+func removePrefixZero(a []int) []int {
+	for len(a) > 1 && a[len(a)-1] == 0 {
+		a = a[:len(a)-1]
 	}
 	return a
 }

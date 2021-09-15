@@ -48,7 +48,6 @@ func TestSub(t *testing.T) {
 			name: "case4",
 			want: "21",
 		},
-
 	}
 	for _, ts := range testCase {
 		t.Run(ts.name, func(t *testing.T) {

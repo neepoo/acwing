@@ -25,7 +25,7 @@ func add(x1, y1, x2, y2, c int) {
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-	reader = bufio.NewReaderSize(reader, N * N *4)
+	reader = bufio.NewReaderSize(reader, N*N*4)
 	Fscanf(reader, "%d %d %d\n", &n, &m, &q)
 	//Println("n m q", n, m, q)
 	var t int

@@ -30,7 +30,6 @@ func TestSub(t *testing.T) {
 			want: "0",
 			name: "case3",
 		},
-
 	}
 
 	for _, ts := range testCase {

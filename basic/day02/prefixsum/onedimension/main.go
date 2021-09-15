@@ -21,7 +21,7 @@ func main() {
 		fmt.Scanf("%d", &q[i])
 		q[i] += q[i-1]
 	}
-	for i:=0; i< m;i++{
+	for i := 0; i < m; i++ {
 		fmt.Scanf("%d %d", &l, &r)
 		fmt.Println(q[r] - q[l-1])
 	}

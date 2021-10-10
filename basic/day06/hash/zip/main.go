@@ -33,7 +33,7 @@ func find(x int) bool {
 }
 
 func insert(x int) {
-	k := (x%N + N) % N
+	k := (x%N + N) % N  // hash value, 防止出现负数
 	e[idx] = x
 	ne[idx] = h[k]
 	h[k] = idx
@@ -41,7 +41,6 @@ func insert(x int) {
 }
 
 func main() {
-
 	reader := bufio.NewReader(os.Stdin)
 	reader = bufio.NewReaderSize(reader, 2*N)
 	fmt.Fscanf(reader, "%d\n", &n)

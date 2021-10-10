@@ -66,6 +66,7 @@ func swap(nums []int, a, b int) {
 
 // a, b 表示堆中节点的下标,从1开始
 func swapHeap(a, b int) {
+	// 交换操作是幂等, 即swap(a, b)和swap(b, a)产生的效果一样,因此下面两行谁在前面都无所谓
 	swap(ph[:], hp[a], hp[b]) // hp[a],hp[b] 分别表示堆中的a,b这两个节点是第几个插入的
 	swap(hp[:], a, b)         // 因为hp数组中的下标表示的就是堆中元素的下标,因此直接swap(a,b)就可以
 	swap(q[:], a, b)          // 交换堆中两个节点的值

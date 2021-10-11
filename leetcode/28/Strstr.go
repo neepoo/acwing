@@ -68,13 +68,10 @@ func strStr1(s, pa string) int {
 		pHash = pHash*P + uint64(ch-'a'+1)
 	}
 	for i := 0; i +lp <= ls ; i++ {
-		var currentHash uint64
-		currentHash = h[i+lp] - h[i]*p[lp]
+		currentHash := h[i+lp] - h[i]*p[lp]
 		if currentHash == pHash{
 			return i
 		}
 	}
-
 	return -1
-
 }

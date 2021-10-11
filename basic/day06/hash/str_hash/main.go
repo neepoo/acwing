@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 )
-
+// https://www.acwing.com/problem/content/843/
 // 字符串前缀hash
 // https://cp-algorithms.com/string/string-hashing.html
 /*
@@ -24,7 +24,11 @@ var (
 )
 
 func get(l, r int) uint64 {
-	return h[r] - h[l-1]*p[r-l+1]
+	a := h[r]
+	b := h[l-1]
+	c := p[r-l+1]
+	res := a - b*c
+	return res
 }
 
 func main() {

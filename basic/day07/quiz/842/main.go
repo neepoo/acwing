@@ -1,6 +1,12 @@
 package main
 
-import "fmt"
+// https://www.acwing.com/problem/content/844/
+
+import (
+	"bytes"
+	"fmt"
+	"strconv"
+)
 
 const N = 8
 
@@ -8,15 +14,16 @@ var (
 	st [N]bool
 	q  [N]int
 	n  int
+	bf bytes.Buffer
 )
 
 // x表示第几层
 func dfs(x int) {
 	if x == n+1 {
 		for i := 1; i <= n; i++ {
-			fmt.Printf("%d ", q[i])
+			bf.WriteString(strconv.Itoa(q[i]) + " ")
 		}
-		fmt.Println()
+		bf.WriteString("\n")
 		return
 	}
 	for i := 1; i <= n ; i++ {
@@ -32,4 +39,5 @@ func dfs(x int) {
 func main() {
 	fmt.Scanf("%d", &n)
 	dfs(1)
+	fmt.Print(bf.String())
 }

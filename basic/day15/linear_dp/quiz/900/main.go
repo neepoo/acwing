@@ -28,11 +28,12 @@ func dfs(u int) {
 		return
 	}
 	for i := 1; i <= u; i++ {
-		if i == 1 {
+		switch {
+		case i == 1:
 			f[u][i] = f[u-1][i] + g[u][i]
-		} else if i == u {
+		case i == u:
 			f[u][i] = f[u-1][i-1] + g[u][i]
-		} else {
+		default:
 			f[u][i] = max(f[u-1][i], f[u-1][i-1]) + g[u][i]
 		}
 		dfs(u + 1)
@@ -89,11 +90,12 @@ func dfs(u int) {
 func solution() {
 	for u := 1; u <= n; u++ {
 		for i := 1; i <= u; i++ {
-			if i == 1 {
+			switch {
+			case i == 1:
 				f[u][i] = f[u-1][i] + g[u][i]
-			} else if i == u {
+			case i == u:
 				f[u][i] = f[u-1][i-1] + g[u][i]
-			} else {
+			default:
 				f[u][i] = max(f[u-1][i], f[u-1][i-1]) + g[u][i]
 			}
 		}

@@ -9,7 +9,7 @@ func mySqrt(x int) int {
 	}
 	l, r := 0, x
 	var mid int
-	for k := 0; k < 100; k++ {
+	for k := 0; k <= 31; k++ {
 		mid = (l + r) / 2
 		i := mid * mid
 		if i > x {

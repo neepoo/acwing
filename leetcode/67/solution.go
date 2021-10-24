@@ -24,7 +24,7 @@ func addBinary(a string, b string) string {
 		reverseRes += strconv.Itoa(curAns % 2)
 
 	}
-	for j:=i;j<len(a);j++{
+	for j := i; j < len(a); j++ {
 		curA := a[len(a)-j-1]
 		curAInt := 0
 		if curA == '1' {
@@ -34,7 +34,7 @@ func addBinary(a string, b string) string {
 		c = curAns / 2
 		reverseRes += strconv.Itoa(curAns % 2)
 	}
-	for j:=i;j<len(b);j++{
+	for j := i; j < len(b); j++ {
 		curB := b[len(b)-j-1]
 		curBInt := 0
 		if curB == '1' {
@@ -44,7 +44,7 @@ func addBinary(a string, b string) string {
 		c = curAns / 2
 		reverseRes += strconv.Itoa(curAns % 2)
 	}
-	if c >= 1{
+	if c >= 1 {
 		reverseRes += "1"
 	}
 	res := ""

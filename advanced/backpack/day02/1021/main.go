@@ -6,27 +6,36 @@ import (
 	"os"
 )
 
-const N = 3010
+const N = 6010
 
 var (
-	n int // 面值的总数
-	m int // 目标值
-
-	f [N]int
+	n, m int
+	f    [510][N]int
 )
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Fscanf(reader, "%d %d\n", &n, &m)
-	f[0] = 1
-
-	for i := 0; i < n; i++ {
-		var x int
-		fmt.Fscanf(reader, "%d\n", &x)
-
-		for j := x; j <= m; j++ {
-			f[j]+=f[j-x]
+	for i := 1; i <= n; i++ { // 枚举物品
+		var a, b, c int
+		fmt.Fscanf(reader, "%d %d %d\n", &a, &b, &c)
+		// enumerate v
+		for j := 0; j <= m; j++ {
+			// enumerate method
+			for k := 0; k <= c; k++ {
+				if j >= k*a {
+					f[i][j] = max(f[i][j], f[i-1][j-a*k]+b*k)
+				}
+			}
 		}
 	}
-	fmt.Println(f[m])
+
+	fmt.Println(f[n][m])
+}
+
+func max(i int, i2 int) int {
+	if i > i2 {
+		return i
+	}
+	return i2
 }

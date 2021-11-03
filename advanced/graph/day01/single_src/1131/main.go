@@ -118,6 +118,37 @@ func dijkstraHeap() {
 	}
 }
 
+func spfa() {
+	var q [N]int
+	hh, tt := 0, 1
+	st[S] = true
+	dist[S] = 0
+	q[0] = S
+	for hh != tt {
+		head := q[hh]
+		st[head] = false
+		hh++
+		if hh == N {
+			hh = 0
+		}
+		for i := h[head]; i != -1; i = ne[i] {
+			j := e[i]
+			if dist[j] > dist[head] + w[i]{
+				dist[j] = dist[head] + w[i]
+				if !st[j]{
+					//注意循环队列的这里, 是先赋值在++
+					q[tt] = j
+					tt++
+					if tt == N{
+						tt = 0
+					}
+					st[j] = true
+				}
+			}
+		}
+	}
+}
+
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	reader = bufio.NewReaderSize(reader, M*3)
@@ -128,6 +159,6 @@ func main() {
 		add(a, b, c)
 		add(b, a, c)
 	}
-	dijkstraHeap()
+	spfa()
 	fmt.Println(dist[T])
 }

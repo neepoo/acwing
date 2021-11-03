@@ -38,18 +38,20 @@ type pair struct {
 }
 
 func bfs() int {
-	var q [M]pair
-	hh, tt := 0, -1
-	tt++
-	q[tt] = pair{1, 0}
+	var q [N]pair
+	hh, tt := 0, 1
+	q[0] = pair{1, 0}
 	st[1] = true
 	if 1 == n{
 		return 0
 	}
-	for hh <= tt {
+	for hh != tt {
 		head := q[hh]
 		//fmt.Printf("head=%#v\n", head)
 		hh++
+		if hh == N{
+			hh = 0
+		}
 		for i := h[head.id]; i != -1; i = ne[i] {
 			j := e[i]
 			//fmt.Println("j=", j, "n=", n)
@@ -57,8 +59,11 @@ func bfs() int {
 				return head.ds + 1
 			}
 			if !st[j] {
-				tt++
 				q[tt] = pair{j, head.ds + 1}
+				tt++
+				if tt == N{
+					tt = 0
+				}
 				st[j] = true
 			}
 		}

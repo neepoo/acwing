@@ -26,6 +26,7 @@ func subStr(s string, l, r int) string {
 	return s[l:r]
 }
 
+// dragon 当前的单词接龙的结果, last是接在dragon最后一部分单词的索引是多少.因为后面能够接在龙后面的单词必须和words[last]有重合部分
 func dfs(dragon string, last int) {
 	ans = max(len(dragon), ans)
 	cnt[last]++

@@ -58,7 +58,7 @@ func Test_distanceK(t *testing.T) {
 				},
 				k: 2,
 			},
-			want: []int{7, 4, 1},
+			want: []int{1, 7, 4},
 		},
 	}
 	for _, tt := range tests {

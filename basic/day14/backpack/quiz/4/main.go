@@ -10,7 +10,7 @@ import (
 const N = 110
 
 var (
-	f       [N][N]int
+	f       [N]int
 	v, w, s [N]int
 	n, m    int
 )
@@ -34,13 +34,13 @@ func main() {
 		s[i] = c
 	}
 	for i := 1; i <= n; i++ {
-		for j := 0; j <= m; j++ {
+		for j := m; j >= 0; j-- {
 			for k := 0; k <= s[i]; k++ {
 				if j >= v[i]*k {
-					f[i][j] = max(f[i][j], f[i-1][j-k*v[i]]+k*w[i])
+					f[j] = max(f[j], f[j-k*v[i]]+k*w[i])
 				}
 			}
 		}
 	}
-	Println(f[n][m])
+	Println(f[m])
 }

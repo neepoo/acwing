@@ -1,4 +1,5 @@
 package main
+
 // https://www.acwing.com/problem/content/150/
 import (
 	"bufio"
@@ -49,7 +50,7 @@ func main() {
 		mh = append(mh, x)
 	}
 	heap.Init(&mh)
-	for n > 1 {  // 进行n-1次操作
+	for n > 1 { // 进行n-1次操作
 		m1, m2 := heap.Pop(&mh).(int), heap.Pop(&mh).(int)
 		res += m1 + m2
 		heap.Push(&mh, m1+m2)

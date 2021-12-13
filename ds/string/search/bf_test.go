@@ -37,7 +37,7 @@ func Test_bs1(t *testing.T) {
 				s: "abcdef",
 				p: "de",
 			},
-			want: strings.Index("abcdef","de"),
+			want: strings.Index("abcdef", "de"),
 		},
 	}
 	for _, tt := range tests {
@@ -81,7 +81,7 @@ func Test_bs2(t *testing.T) {
 				s: "abcdecdef",
 				p: "def",
 			},
-			want: strings.Index("abcdecdef","def"),
+			want: strings.Index("abcdecdef", "def"),
 		},
 	}
 	for _, tt := range tests {
@@ -111,11 +111,19 @@ func Test_kmp(t *testing.T) {
 			},
 			want: strings.Index("abaabaabeca", "abaabe"),
 		},
+		{
+			name: "Case2",
+			args: args{
+				s: "sdfwegfdhabc234rabcdabcabcd",
+				p: "abcabcd",
+			},
+			want: strings.Index("sdfwegfdhabc234rabcdabcabcd", "abcabcd"),
+		},
 	}
-		for _, tt := range tests {
+	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := kmp(tt.args.s, tt.args.p)
-			if got != tt.want{
+			if got != tt.want {
 				t.Fatal("kmp error")
 			}
 		})

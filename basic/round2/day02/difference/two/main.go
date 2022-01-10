@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
+	"strings"
 )
 
 const N = 1010
@@ -16,6 +18,7 @@ var (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
+	reader = bufio.NewReaderSize(reader, N*N*4)
 	fmt.Fscan(reader, &n, &m, &q)
 	var x int
 	for i := 1; i <= n; i++ {
@@ -28,14 +31,20 @@ func main() {
 		fmt.Fscan(reader, &x1, &y1, &x2, &y2, &c)
 		add(x1, y1, x2, y2, c)
 	}
+	ss := strings.Builder{}
 	// sum
 	for i := 1; i <= n; i++ {
 		for j := 1; j <= m; j++ {
 			a[i][j] += a[i][j-1] + a[i-1][j] - a[i-1][j-1]
-			fmt.Print(a[i][j], " ")
+			ss.WriteString(strconv.Itoa(a[i][j]) + " ")
 		}
-		fmt.Println()
+		ss.WriteString("\n")
 	}
+	//fmt.Println(ss.String())
+	bw := bufio.NewWriter(os.Stdout)
+	bw = bufio.NewWriterSize(bw, ss.Cap())
+	fmt.Fprint(bw, ss.String())
+	bw.Flush()
 }
 
 func add(x1 int, y1 int, x2 int, y2 int, c int) {
